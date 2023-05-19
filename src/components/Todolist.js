@@ -1,3 +1,5 @@
+import { TodolistItem } from "./TodolistItem";
+
 export const Todolist = (props) => {
 
     return(
@@ -15,21 +17,12 @@ export const Todolist = (props) => {
                         {
                             props.todosToRender.map((todo)=>{
                                 return( 
-                                <tr key={todo.id}>
-                                    <td>{todo.title}</td>
-                                    <td>{todo.priority}</td>
-                                    <td>
-                                        <input type="checkbox" readOnly checked={todo.status}/>
-                                    </td>
-                                    <td>
-                                        <div style={{display:"flex", gap: 20}}>
-                                        <button>Edit</button>
-                                        <button>Delete</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                )
-                                
+                                    <TodolistItem 
+                                    key={todo.id} 
+                                    todo={todo} 
+                                    setTodos={props.setTodos}
+                                    setTodoToEdit={props.setTodoToEdit}/>
+                                );
                             })
                         }
                         
